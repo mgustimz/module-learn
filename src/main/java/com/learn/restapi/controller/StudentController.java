@@ -1,5 +1,6 @@
 package com.learn.restapi.controller;
 
+import com.learn.restapi.dto.StudentDTO;
 import com.learn.restapi.model.Student;
 import com.learn.restapi.service.IStudentService;
 import java.util.List;
@@ -30,7 +31,7 @@ public class StudentController {
   }
 
   @PostMapping("/")
-  public Student addStudent(@Valid @RequestBody Student student) {
+  public Student addStudent(@Valid @RequestBody StudentDTO student) {
     return iStudentService.saveStudent(student);
   }
 
