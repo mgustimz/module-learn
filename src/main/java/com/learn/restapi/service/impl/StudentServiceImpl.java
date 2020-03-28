@@ -3,25 +3,22 @@ package com.learn.restapi.service.impl;
 import com.learn.restapi.dto.StudentDTO;
 import com.learn.restapi.model.Student;
 import com.learn.restapi.repository.StudentRepository;
-import com.learn.restapi.service.IStudentService;
-import java.util.List;
-import javax.annotation.Resource;
+import com.learn.restapi.service.StudentService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class StudentServiceImpl implements IStudentService {
+public class StudentServiceImpl implements StudentService {
 
-  private StudentRepository studentRepository;
+  private final StudentRepository studentRepository;
+  private final ModelMapper modelMapper;
 
-  @Autowired
-  StudentServiceImpl(StudentRepository studentRepository) {
+  public StudentServiceImpl(StudentRepository studentRepository, ModelMapper modelMapper) {
     this.studentRepository = studentRepository;
+    this.modelMapper = modelMapper;
   }
-
-  @Resource(name = "modelMapper")
-  private ModelMapper modelMapper;
 
   @Override
   public List<Student> getAll() {
@@ -33,5 +30,4 @@ public class StudentServiceImpl implements IStudentService {
     Student student = modelMapper.map(studentDTO, Student.class);
     return studentRepository.save(student);
   }
-
 }

@@ -1,22 +1,24 @@
 package com.learn.restapi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
-@Table
+import javax.persistence.*;
+
 @Entity
+@Table(name = "student")
+@Data
+@NoArgsConstructor
 public class Student {
 
   @Id
+  @Column(name = "id")
   @GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
   private Long id;
-  private String name;
-  private Integer age;
 
+  @Column(name = "name")
+  private String name;
+
+  @Column(name = "age")
+  private Integer age;
 }

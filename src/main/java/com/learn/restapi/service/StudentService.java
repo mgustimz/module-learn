@@ -4,9 +4,9 @@ import com.learn.restapi.dto.StudentDTO;
 import com.learn.restapi.model.Student;
 import java.util.List;
 
-public interface IStudentService {
+public interface StudentService {
 
   List<Student> getAll();
-  Student saveStudent(StudentDTO student);
 
+  Student saveStudent(StudentDTO student);
 }

@@ -2,42 +2,29 @@ package com.learn.restapi.controller;
 
 import com.learn.restapi.dto.StudentDTO;
 import com.learn.restapi.model.Student;
-import com.learn.restapi.service.IStudentService;
-import java.util.List;
+import com.learn.restapi.service.StudentService;
+import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 @RestController
 @RequestMapping("/student")
 public class StudentController {
 
-  private IStudentService iStudentService;
+  private StudentService studentService;
 
-  @Autowired
-  StudentController(IStudentService iStudentService) {
-    this.iStudentService = iStudentService;
+  public StudentController(StudentService studentService) {
+    this.studentService = studentService;
   }
 
-  @GetMapping("/")
+  @GetMapping
   public List<Student> getAll() {
-    return iStudentService.getAll();
+    return studentService.getAll();
   }
 
-  @PostMapping("/")
+  @PostMapping
   public Student addStudent(@Valid @RequestBody StudentDTO student) {
-    return iStudentService.saveStudent(student);
+    return studentService.saveStudent(student);
   }
-
-  @GetMapping(value = "/ok")
-  public ResponseEntity<String> getCheckOk() {
-    return new ResponseEntity<>("OK", HttpStatus.OK);
-  }
-
 }

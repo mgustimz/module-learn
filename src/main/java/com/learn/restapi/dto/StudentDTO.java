@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class StudentDTO {
 
+  private Integer id;
   private String name;
   private Integer age;
-
 }
