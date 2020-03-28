@@ -31,8 +31,7 @@ public class StudentController {
 
   @PostMapping("/")
   public Student addStudent(@Valid @RequestBody Student student) {
-    iStudentService.saveStudent(student);
-    return student;
+    return iStudentService.saveStudent(student);
   }
 
   @GetMapping(value = "/ok")
