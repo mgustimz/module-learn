@@ -38,14 +38,16 @@ class ClassroomServiceTest {
         try {
             classroomService.findOne(1);
             assertThat(classroomRepositorySpy.getOneWasCalled).isTrue();
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
     }
 
     @Test
     void givenValidId_whenFindOne_shouldReturnCorrectResponse() {
         try {
             assertThat(classroomService.findOne(1)).isInstanceOf(ClassroomDTO.class);
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
     }
 
     @Test

@@ -12,22 +12,22 @@ import java.util.List;
 @Service
 public class StudentServiceImpl implements StudentService {
 
-  private final StudentRepository studentRepository;
-  private final ModelMapper modelMapper;
+    private final StudentRepository studentRepository;
+    private final ModelMapper modelMapper;
 
-  public StudentServiceImpl(StudentRepository studentRepository, ModelMapper modelMapper) {
-    this.studentRepository = studentRepository;
-    this.modelMapper = modelMapper;
-  }
+    public StudentServiceImpl(StudentRepository studentRepository, ModelMapper modelMapper) {
+        this.studentRepository = studentRepository;
+        this.modelMapper = modelMapper;
+    }
 
-  @Override
-  public List<Student> getAll() {
-    return studentRepository.findAll();
-  }
+    @Override
+    public List<Student> getAll() {
+        return studentRepository.findAll();
+    }
 
-  @Override
-  public Student saveStudent(StudentDTO studentDTO) {
-    Student student = modelMapper.map(studentDTO, Student.class);
-    return studentRepository.save(student);
-  }
+    @Override
+    public Student saveStudent(StudentDTO studentDTO) {
+        Student student = modelMapper.map(studentDTO, Student.class);
+        return studentRepository.save(student);
+    }
 }

@@ -114,7 +114,9 @@ public class ClassroomRepositorySpy implements ClassroomRepository {
     public Classroom getOne(Integer integer) {
         getOneWasCalled = true;
         Classroom classroom = classrooms.get(integer);
-        if (null == classroom) throw new EntityNotFoundException();
+        if (null == classroom) {
+            throw new EntityNotFoundException();
+        }
         return classroom;
     }
 

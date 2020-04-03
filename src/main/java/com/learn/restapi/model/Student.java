@@ -11,14 +11,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Student {
 
-  @Id
-  @Column(name = "id")
-  @GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
-  private Long id;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-  @Column(name = "name")
-  private String name;
+    @Column(name = "name")
+    private String name;
 
-  @Column(name = "age")
-  private Integer age;
+    @Column(name = "age")
+    private int age;
 }

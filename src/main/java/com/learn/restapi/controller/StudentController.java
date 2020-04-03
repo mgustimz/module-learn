@@ -12,19 +12,19 @@ import java.util.List;
 @RequestMapping("/student")
 public class StudentController {
 
-  private StudentService studentService;
+    private StudentService studentService;
 
-  public StudentController(StudentService studentService) {
-    this.studentService = studentService;
-  }
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
-  @GetMapping
-  public List<Student> getAll() {
-    return studentService.getAll();
-  }
+    @GetMapping
+    public List<Student> getAll() {
+        return studentService.getAll();
+    }
 
-  @PostMapping
-  public Student addStudent(@Valid @RequestBody StudentDTO student) {
-    return studentService.saveStudent(student);
-  }
+    @PostMapping
+    public Student addStudent(@Valid @RequestBody StudentDTO student) {
+        return studentService.saveStudent(student);
+    }
 }
