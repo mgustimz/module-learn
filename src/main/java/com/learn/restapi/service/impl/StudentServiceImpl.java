@@ -26,8 +26,17 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student saveStudent(StudentDTO studentDTO) {
+    public StudentDTO saveStudent(StudentDTO studentDTO) {
+        validateRequest(studentDTO);
         Student student = modelMapper.map(studentDTO, Student.class);
-        return studentRepository.save(student);
+        studentRepository.save(student);
+        return modelMapper.map(student, StudentDTO.class);
     }
+
+    private void validateRequest(Object request) {
+        if (null == request) {
+            throw new IllegalArgumentException("Request cannot be null");
+        }
+    }
+
 }

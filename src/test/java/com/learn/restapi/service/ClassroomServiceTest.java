@@ -34,7 +34,7 @@ class ClassroomServiceTest {
     }
 
     @Test
-    void givenValidId_whenFindOne_shouldCallGetOnInRepository() {
+    void givenValidId_whenFindOne_shouldCallGetOneInRepository() {
         try {
             classroomService.findOne(1);
             assertThat(classroomRepositorySpy.getOneWasCalled).isTrue();

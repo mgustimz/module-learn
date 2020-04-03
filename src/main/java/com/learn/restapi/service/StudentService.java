@@ -8,5 +8,5 @@ public interface StudentService {
 
     List<Student> getAll();
 
-    Student saveStudent(StudentDTO student);
+    StudentDTO saveStudent(StudentDTO student);
 }

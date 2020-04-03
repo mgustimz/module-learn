@@ -6,7 +6,9 @@ import com.learn.restapi.repository.ClassroomRepository;
 import com.learn.restapi.service.ClassroomService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
+@Service
 @RequiredArgsConstructor
 public class ClassroomServiceImpl implements ClassroomService {
 

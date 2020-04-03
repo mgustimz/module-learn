@@ -24,7 +24,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public Student addStudent(@Valid @RequestBody StudentDTO student) {
+    public StudentDTO addStudent(@RequestBody StudentDTO student) {
         return studentService.saveStudent(student);
     }
 }
