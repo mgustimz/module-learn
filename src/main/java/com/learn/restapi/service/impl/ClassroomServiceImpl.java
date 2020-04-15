@@ -21,7 +21,9 @@ public class ClassroomServiceImpl implements ClassroomService {
     public ClassroomDTO findOne(Integer id) {
         validateRequest(id);
         Classroom classroom = classroomRepository.findOne(id).orElseThrow(
-                () -> new EntityNotFoundException(String.format("Classroom with Id [%s] doesn't exist", id))
+                () -> new EntityNotFoundException(
+                        String.format("Classroom with Id [%s] doesn't exist", id)
+                )
         );
         return modelMapper.map(classroom, ClassroomDTO.class);
     }
