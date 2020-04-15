@@ -19,6 +19,7 @@ public class ClassroomRepositorySpy implements ClassroomRepository {
     public Map<Integer, Classroom> classrooms = new HashMap<>();
     public boolean saveWasCalled;
     public Classroom classroom;
+    public boolean findOneWasCalled;
 
     @Override
     public List<Classroom> findAll() {
@@ -148,5 +149,11 @@ public class ClassroomRepositorySpy implements ClassroomRepository {
     @Override
     public <S extends Classroom> boolean exists(Example<S> example) {
         return false;
+    }
+
+    @Override
+    public Optional<Classroom> findOne(Integer id) {
+        findOneWasCalled = true;
+        return Optional.ofNullable(classrooms.get(id));
     }
 }

@@ -37,7 +37,7 @@ class ClassroomServiceTest {
     void givenValidId_whenFindOne_shouldCallGetOneInRepository() {
         try {
             classroomService.findOne(1);
-            assertThat(classroomRepositorySpy.getOneWasCalled).isTrue();
+            assertThat(classroomRepositorySpy.findOneWasCalled).isTrue();
         } catch (Exception ignored) {
         }
     }
@@ -54,6 +54,7 @@ class ClassroomServiceTest {
     void givenNullEntity_whenFindOne_shouldThrowException() {
         Exception e = assertThrows(Exception.class, () -> classroomService.findOne(1));
         assertThat(e).isInstanceOf(EntityNotFoundException.class);
+        assertThat(e.getMessage()).isEqualTo(String.format("Classroom with Id [%s] doesn't exist", 1));
     }
 
     @Test

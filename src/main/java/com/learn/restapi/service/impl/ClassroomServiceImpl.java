@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
+
 @Service
 @RequiredArgsConstructor
 public class ClassroomServiceImpl implements ClassroomService {
@@ -18,7 +20,9 @@ public class ClassroomServiceImpl implements ClassroomService {
     @Override
     public ClassroomDTO findOne(Integer id) {
         validateRequest(id);
-        Classroom classroom = classroomRepository.getOne(id);
+        Classroom classroom = classroomRepository.findOne(id).orElseThrow(
+                () -> new EntityNotFoundException(String.format("Classroom with Id [%s] doesn't exist", id))
+        );
         return modelMapper.map(classroom, ClassroomDTO.class);
     }
 
