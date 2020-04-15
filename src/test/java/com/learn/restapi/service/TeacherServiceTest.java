@@ -36,7 +36,7 @@ public class TeacherServiceTest {
     void givenValidId_whenFindOne_shouldCallGetOneInRepository() {
         try {
             teacherService.findOne(1);
-            assertThat(teacherRepositorySpy.getOneWasCalled).isTrue();
+            assertThat(teacherRepositorySpy.findOneWasCalled).isTrue();
         } catch (Exception ignored) {
         }
     }
@@ -53,6 +53,7 @@ public class TeacherServiceTest {
     void givenNullEntity_whenFindOne_shouldThrowException() {
         Exception e = assertThrows(Exception.class, () -> teacherService.findOne(1));
         assertThat(e).isInstanceOf(EntityNotFoundException.class);
+        assertThat(e.getMessage()).isEqualTo(String.format("Teacher with Id [%s] doesn't exist", 1));
     }
 
     @Test

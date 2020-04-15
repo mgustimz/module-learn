@@ -4,6 +4,7 @@ import com.learn.restapi.dto.TeacherDTO;
 import com.learn.restapi.model.Teacher;
 import com.learn.restapi.repository.TeacherRepository;
 import com.learn.restapi.service.TeacherService;
+import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,11 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public TeacherDTO findOne(Integer id) {
         validateRequest(id);
-        Teacher teacher = teacherRepository.getOne(id);
+        Teacher teacher = teacherRepository.findOne(id).orElseThrow(
+                () -> new EntityNotFoundException(
+                        String.format("Teacher with Id [%s] doesn't exist", id)
+                )
+        );
         return modelMapper.map(teacher, TeacherDTO.class);
     }
 

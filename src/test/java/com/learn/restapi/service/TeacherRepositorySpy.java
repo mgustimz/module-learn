@@ -1,9 +1,9 @@
 package com.learn.restapi.service;
 
+import com.learn.restapi.model.Classroom;
 import com.learn.restapi.model.Teacher;
 import com.learn.restapi.repository.TeacherRepository;
 import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -19,6 +19,7 @@ public class TeacherRepositorySpy implements TeacherRepository {
     public Map<Integer, Teacher> teachers = new HashMap<>();
     public Teacher teacher;
     public boolean saveWasCalled;
+    public boolean findOneWasCalled;
 
     @Override
     public List<Teacher> findAll() {
@@ -148,5 +149,11 @@ public class TeacherRepositorySpy implements TeacherRepository {
     @Override
     public <S extends Teacher> boolean exists(Example<S> example) {
         return false;
+    }
+
+    @Override
+    public Optional<Teacher> findOne(Integer id) {
+        findOneWasCalled = true;
+        return Optional.ofNullable(teachers.get(id));
     }
 }
