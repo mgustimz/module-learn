@@ -20,7 +20,7 @@ public class ClassroomServiceImpl implements ClassroomService {
     @Override
     public ClassroomDTO findOne(Integer id) {
         validateRequest(id);
-        Classroom classroom = classroomRepository.findOne(id).orElseThrow(
+        Classroom classroom = classroomRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException(
                         String.format("Classroom with Id [%s] doesn't exist", id)
                 )

@@ -82,8 +82,9 @@ public class TeacherRepositorySpy implements TeacherRepository {
     }
 
     @Override
-    public Optional<Teacher> findById(Integer integer) {
-        return Optional.empty();
+    public Optional<Teacher> findById(Integer id) {
+        findOneWasCalled = true;
+        return Optional.ofNullable(teachers.get(id));
     }
 
     @Override
@@ -149,11 +150,5 @@ public class TeacherRepositorySpy implements TeacherRepository {
     @Override
     public <S extends Teacher> boolean exists(Example<S> example) {
         return false;
-    }
-
-    @Override
-    public Optional<Teacher> findOne(Integer id) {
-        findOneWasCalled = true;
-        return Optional.ofNullable(teachers.get(id));
     }
 }

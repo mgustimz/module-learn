@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface ClassroomRepository extends JpaRepository<Classroom, Integer> {
 
-    Optional<Classroom> findOne(Integer id);
+    Optional<Classroom> findById(Integer id);
 }

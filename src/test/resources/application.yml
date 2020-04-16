@@ -19,4 +19,4 @@ spring:
       path: /h2
       settings:
         trace: false
-        web-allow-others: false
+        web-allow-others: true

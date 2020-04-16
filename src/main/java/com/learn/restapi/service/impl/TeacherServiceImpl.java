@@ -19,7 +19,7 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public TeacherDTO findOne(Integer id) {
         validateRequest(id);
-        Teacher teacher = teacherRepository.findOne(id).orElseThrow(
+        Teacher teacher = teacherRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException(
                         String.format("Teacher with Id [%s] doesn't exist", id)
                 )
