@@ -1,17 +1,10 @@
 package com.learn.restapi.controller.student;
 
-import static com.learn.restapi.common.TestConstant.DUMMY;
-import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learn.restapi.controller.StudentController;
 import com.learn.restapi.dto.StudentDTO;
 import com.learn.restapi.model.Student;
 import com.learn.restapi.service.StudentService;
-import java.util.Collections;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -22,6 +15,14 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+
+import java.util.Collections;
+import java.util.List;
+
+import static com.learn.restapi.common.TestConstant.DUMMY;
+import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(StudentController.class)
 class StudentControllerIntegrationTest {
@@ -57,7 +58,7 @@ class StudentControllerIntegrationTest {
                 );
     }
 
-    /*@Test
+    @Test
     void givenValidRequest_whenAddStudent_shouldReturnCorrectResult() throws Exception {
         StudentDTO studentDTO = new StudentDTO();
         studentDTO.setName(DUMMY);
@@ -69,11 +70,11 @@ class StudentControllerIntegrationTest {
                         .content(mapper.writeValueAsString(studentDTO)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.id", is(0)))
                 .andExpect(jsonPath("$.name", is(DUMMY)))
                 .andExpect(jsonPath("$.age", is(20)))
                 .andReturn();
-    }*/
+    }
 
     private List<Student> getStudent() {
         Student student = new Student();
